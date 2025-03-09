@@ -36,7 +36,7 @@ Durante a primeira sprint, o grupo foi formado por:
   </tr>
   <tr>
     <td align="center">
-      <img src="https://i.ibb.co/ZZZXjHn/imagem-2025-03-08-220531284.png"></a>" alt="Matheus Daniel De Toledo" width="100" height="100"><br>
+      <img src="https://i.ibb.co/ZZZXjHn/imagem-2025-03-08-220531284.png" alt="Matheus Daniel De Toledo" width="100" height="100"><br>
       Matheus Daniel De Toledo
     </td>
     <td align="center">
