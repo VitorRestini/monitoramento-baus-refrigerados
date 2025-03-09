@@ -44,7 +44,7 @@ Durante a primeira sprint, o grupo foi formado por:
       <a href="https://github.com/RebecaOlive">Rebeca Oliveira Ferreira</a>
     </td>
     <td align="center">
-      <img src="https://via.placeholder.com/100" alt="Samuel Gonçalves Barros" width="100" height="100"><br>
+      <img src="https://i.ibb.co/TxGL64GZ/imagem-2025-03-08-222714982.png" alt="Samuel Gonçalves Barros" width="100" height="100"><br>
       <a href="https://github.com/aizenBleach">Samuel Gonçalves Barros</a>
     </td>
   </tr>
