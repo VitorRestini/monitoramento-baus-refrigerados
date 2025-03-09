@@ -26,7 +26,7 @@ Durante a primeira sprint, o grupo foi formado por:
       <a href="https://github.com/F-Shouter">Anne Yukari Yamasaki</a>
     </td>
     <td align="center">
-      <img src="https://via.placeholder.com/100" alt="Luca Dias Pereira" width="100" height="100"><br>
+      <img src="https://i.ibb.co/nNy5pfWr/imagem-2025-03-08-220645898.png" alt="Luca Dias Pereira" width="100" height="100"><br>
       <a href="https://github.com/twitterpontocom">Luca Dias Pereira</a>
     </td>
     <td align="center">
@@ -36,7 +36,7 @@ Durante a primeira sprint, o grupo foi formado por:
   </tr>
   <tr>
     <td align="center">
-      <img src="https://via.placeholder.com/100" alt="Matheus Daniel De Toledo" width="100" height="100"><br>
+      <img src="https://i.ibb.co/ZZZXjHn/imagem-2025-03-08-220531284.png"></a>" alt="Matheus Daniel De Toledo" width="100" height="100"><br>
       Matheus Daniel De Toledo
     </td>
     <td align="center">
