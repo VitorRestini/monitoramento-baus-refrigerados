@@ -19,15 +19,42 @@ O sistema desenvolvido permite:
 
 Durante a primeira sprint, o grupo foi formado por:
 
-| Nome                      | GitHub                                              |
-|---------------------------|-----------------------------------------------------|
-| Anne Yukari Yamasaki      | [@F-Shouter](https://github.com/F-Shouter)          |
-| Luca Dias Pereira         | [@twitterpontocom](https://github.com/twitterpontocom) |
-| Lucas Queiroz De Lima     | [@LucasQlima](https://github.com/LucasQlima)        |
-| Matheus Daniel De Toledo  | (Adicione o GitHub)                                 |
-| Rebeca Oliveira Ferreira  | [@RebecaOlive](https://github.com/RebecaOlive)      |
-| Samuel Gonçalves Barros   | [@aizenBleach](https://github.com/aizenBleach)      |
-| Vitor Souza Librelon Restini | [@VitorRestini](https://github.com/VitorRestini)   |
+<table>
+  <tr>
+    <td align="center">
+      <img src="https://i.ibb.co/CK0Kn6XL/imagem-2025-03-08-214017081.png" alt="Anne Yukari Yamasaki" width="100" height="100"><br>
+      <a href="https://github.com/F-Shouter">Anne Yukari Yamasaki</a>
+    </td>
+    <td align="center">
+      <img src="https://via.placeholder.com/100" alt="Luca Dias Pereira" width="100" height="100"><br>
+      <a href="https://github.com/twitterpontocom">Luca Dias Pereira</a>
+    </td>
+    <td align="center">
+      <img src="https://i.ibb.co/m5jntL3j/imagem-2025-03-08-213704937.png" alt="Lucas Queiroz De Lima" width="100" height="100"><br>
+      <a href="https://github.com/LucasQlima">Lucas Queiroz De Lima</a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="https://via.placeholder.com/100" alt="Matheus Daniel De Toledo" width="100" height="100"><br>
+      Matheus Daniel De Toledo
+    </td>
+    <td align="center">
+      <img src="https://i.ibb.co/6RCnzNzH/imagem-2025-03-08-213919471.png" alt="Rebeca Oliveira Ferreira" width="100" height="100"><br>
+      <a href="https://github.com/RebecaOlive">Rebeca Oliveira Ferreira</a>
+    </td>
+    <td align="center">
+      <img src="https://via.placeholder.com/100" alt="Samuel Gonçalves Barros" width="100" height="100"><br>
+      <a href="https://github.com/aizenBleach">Samuel Gonçalves Barros</a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="https://i.ibb.co/TMCFj6Pn/imagem-2025-03-08-213417487.png" alt="Vitor Souza Librelon Restini" width="100" height="100"><br>
+      <a href="https://github.com/VitorRestini">Vitor Souza Librelon Restini</a>
+    </td>
+  </tr>
+</table>
 
 ---
 
