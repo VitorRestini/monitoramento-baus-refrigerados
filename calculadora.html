@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Calculadora Financeira</h1>
+    <h3 style="color: rgba(96, 72, 181, 0.68);">Monitoramento de Temperatura em Baús Refrigerados</h3>
+    <p>____________________________________________________________________________</p>
+    <br><br>
+    <button onclick="calcSensor()">Calcular quantidade de Sensor</button>
+    <button onclick="calcCombustivel()">Calcular prejuízo de Combustível</button>
+    <button onclick="calcRota()">Calcular prejuízo de Rota</button>
+    <button onclick="calcProduto()">Calcular prejuízo de Produto</button>
+    <br><br>
+    <div id="div_texto"></div>
+</body>
+</html>
+
+<script>
+    // FUNÇÕES PARA CHAMAR A ESTRUTURA HTML
+    function calcCombustivel(){
+        div_texto.innerHTML = `
+            <h2>Calculadora Financeira - Transporte Refrigerado</h2>
+    
+    Consumo de Diesel (litros por hora):  
+    <input type="number" id="input_litrosPorHora"><br>
+    <div class="div1">
+        <b>Caminhões Leves (3 a 7 toneladas)</b> <br>
+        Consumo médio: 3 a 5 km/L <br>
+        Sistema de refrigeração: 0,5 a 1,5 L/hora <br>
+        <b>Caminhões Médios (7 a 15 toneladas)</b> <br>
+        Consumo médio: 2 a 3 km/L <br>
+        Sistema de refrigeração: 1 a 2 L/hora <br><br>
+    </div>
+
+    Preço do litro do Diesel (R$):  
+    <input type="number" id="input_precoDiesel"><br><br>
+
+    Horas de Funcionamento por Dia:  
+    <input type="number" id="input_horasUso"><br><br>
+
+    Valor médio da carga transportada (R$):  
+    <input type="number" id="input_valorCarga"><br><br>
+
+    Percentual médio de perda (%) sem monitoramento:  
+    <input type="number" id="input_percentualPerda"><br>
+    <div class="div1">
+        No transporte de frutas e vegetais, a perda pode chegar a 10% a 20% sem refrigeração adequada. <br>
+        Em carnes e laticínios, pode variar entre 5% e 15%. <br><br>
+    </div>
+
+    <button onclick="calcular()">Calcular</button><br><br>
+
+    <div id="resultado"></div>
+        `;
+    }
+    function calcRota(){
+        div_texto.innerHTML = 
+        `
+        <div>
+        <h2>CALCULADORA PARA BAUS REFRIGERADOS</h2>
+    </div>
+    <div>
+        <div>
+            <p>INFORMAÇÕES DO PRODUTO</p>        
+            <input placeholder="Nome do produto" id="input_nome">                       
+            <input placeholder="Preço unitário" id="input_valor">            
+            <input placeholder="Volume de cada produto" id="input_vl_prod">
+            <input placeholder="Temperatura mínima" id="input_temp_min">
+            <input placeholder="Temperatura máxima" id="input_temp_max">
+        </div>
+        <div>
+            <p>INFORMAÇÕES DO VEÍCULO</p>        
+            <input placeholder="Placa do veículo" id="input_placa">            
+            <input placeholder="Volume máximo" id="input_vl_max">            
+            <input placeholder="Motorista" id="input_motorista">                        
+        </div>
+        <div>
+            <p>INFORMAÇÕES DO ROTA</p>        
+            <input placeholder="Data da rota" id="input_dt_rota">            
+            <input placeholder="Quantidade de produtos" id="input_qt_prod">
+            <input placeholder="Temperatura média do baú" id="input_temp_bau">                                         
+        </div>
+        <br>
+        <button onclick="calc()">Analisar rota e baú</button>
+        <br>
+        <div id="id_mensagem">
+
+        </div>
+    </div>
+        `
+        
+    }
+    function calcProduto(){
+        div_texto.innerHTML = `
+            <h1>Calculadora Financeira</h1>
+    <h3 style="color: #4682B4;">Monitoramento de temperatura em baús refrigerados</h3>
+
+    ________________________________________________________________________________________
+
+    <br><br>
+
+    Digite o nome do produto que você fará o transporte: 
+    <input type="text" id="input_produto">
+
+    <br><br>
+
+    Informe o valor da unidade desse produto em reais:
+    <input type="number" id="input_valor">
+
+    <br><br>
+
+    Escreva a quantidade de produtos que você está transportando:
+    <input type="number" id="input_qtd">
+
+    <br><br>
+
+    O quanto você receberá da empresa contratante para realizar o transporte:
+    <input type="number" id="input_recebido">
+
+    <br><br>
+
+    O que você deseja vizualizar?
+
+    <button onclick="calcTotal()">Ver valor total da carga.</button>
+    <button onclick="disponibilizarBotoes()">Analisar possivel perda.</button>
+
+    <br><br>
+
+    <div id="div_texto"></div>
+        `;
+    }
+    function calcSensor(){
+        div_texto.innerHTML = `
+            Informe o tamanho do seu baú:
+    <Input id="input_tamanho"></Input>
+    <br>
+    1 - Pequeno | 2 - Medio | 3 - Grande
+    <br>
+    Informe a quantidade de alimento sendo transportado
+    <input type="text" id="input_alimento">
+    <br>
+    Até 300kg para pequeno | Até 700kg para medio | Até 1000kg para Grande
+    <br>
+    <button onclick="analisar()">Analisar numero de sensores</button>
+    <div id="div_mensagem"></div>
+        `; 
+    }
+    // FUNÇÕES DE OPERAÇÃO
+    function calc(){
+        var qtProd = Number(input_qt_prod.value)
+        var dtRota = input_dt_rota.value
+        var nmMotorista = input_motorista.value
+        var nmProd = input_nome.value
+        var placa = input_placa.value
+        var precoProd = input_valor.value
+        var vlMaxVeiculo = input_vl_max.value
+        var vlProd = input_vl_prod.value
+        var tempMax = Number(input_temp_max.value)
+        var tempMin = Number(input_temp_min.value)
+        var tempMed = Number(input_temp_bau.value)
+        if(vlProd * qtProd >vlMaxVeiculo )
+        {
+            alert(`Cuidado! Pois você levando um volume de produtos maior do que o capacitado!`)
+            id_mensagem.innerHTML = 
+        `
+            Não será possível realizar essa viagem, pois o volume de produtos sendo carregador é maior do que o permitido.
+        `
+        }
+        else
+        {
+            if(vlProd * qtProd == vlMaxVeiculo)
+            alert(`Cuidado! Pois o veículo está com sua capacidade máxima permitida!`)
+        id_mensagem.innerHTML = 
+        `
+            O veículo de placa: ${placa} saiu no dia: ${dtRota} carregando o produto ${nmProd}.<br>
+            O veículo foi dirigido pelo motorista: ${nmMotorista}. A carga tinha um valor de R$${qtProd * precoProd}.
+        `
+            if(tempMax < tempMed){
+                alert(`A temperatura máxima do produto é ${tempMax}°C e a temperatura média do baú durante a viagem foi de ${tempMed}°C`)
+                id_mensagem.innerHTML += 
+            `
+                <p style="color:red"> Carga com alta possibilidade de deterioração da qualidade do produto ${nmProd}</p>
+            `
+            }
+            else{
+                id_mensagem.innerHTML += 
+            `
+                Durante o trajeto a carga não passou por nenhum risco, já que a temperatura média do báu foi em torno de ${tempMed}°C, respeitando o limite mínimo de ${tempMin}°C e o máximo de ${tempMax}°C
+            `
+            }
+        }
+        
+    }
+    function calcular() {
+            var litrosPorHora = Number(input_litrosPorHora.value);
+            var precoDiesel = Number(input_precoDiesel.value);
+            var horasUso = Number(input_horasUso.value);
+            var valorCarga = Number(input_valorCarga.value);
+            var percentualPerda = Number(input_percentualPerda.value);
+    
+            // Cálculo do custo diário do diesel
+            var custoDiario = litrosPorHora * precoDiesel * horasUso;
+    
+            // Cálculo do prejuízo evitado com o monitoramento da temperatura
+            var perdaEvitada = (valorCarga * percentualPerda) / 100;
+    
+            // Economia total diária
+            var economiaDiaria = perdaEvitada - custoDiario;
+    
+            document.getElementById("resultado").innerHTML = `
+                <p>Custo diário com Diesel: <strong>R$ ${custoDiario.toFixed(2)}</strong></p>
+                <p>Prejuízo evitado ao manter a temperatura ideal: <strong>R$ ${perdaEvitada.toFixed(2)}</strong></p>
+                <p>Economia líquida diária: <strong>R$ ${economiaDiaria.toFixed(2)}</strong></p>
+            `;
+        }
+    function calcTotal() {
+        var produto = input_produto.value;
+        var valorUnitario = Number(input_valor.value);
+        var quantidade = Number(input_qtd.value);
+        var recebido = Number(input_recebido.value);
+        var total = valorUnitario * quantidade;
+        div_texto.innerHTML = `________________________________________________________________________________________
+        <br><br>
+        A sua carga de ${produto} possui o valor monetário de <b style="color: green">R$${total}</b> e você receberá <b style="color: green">R$${recebido}</b> por realizar essa entrega.`;
+    }
+    function disponibilizarBotoes() {
+        div_texto.innerHTML = `________________________________________________________________________________________
+        
+        <br><br>
+
+        <p style="color: gray">INFORMATIVO: Cerca de 10% dos alimentos refrigerados transportados no Brasil são perdidos devido a falhas na cadeia de frio.</p>
+
+        <br>
+        
+        Digite a quantidade de produtos da carga que foram perdidos: 
+        <input type="number" id="input_perda">
+        
+        <br><br>
+
+        Digite a porcentagem referente a margem de perda do produto transportado: 
+        <input type="number" id="input_margem">
+        
+        <br><br>
+        
+        <button onclick="analisarPerda()">Calcular.</button>
+
+        <br><br>
+
+        <div id="div_final"></div>
+        `
+    }
+    function analisarPerda() {
+        var produto = input_produto.value;
+        var valorUnitario = Number(input_valor.value);
+        var quantidade = Number(input_qtd.value);
+        var recebido = Number(input_recebido.value);
+        var qtdPerda = Number(input_perda.value);
+        var margemPerda = Number(input_margem.value) / 100;
+        var total = valorUnitario * quantidade;
+        var perda = (100 * qtdPerda / quantidade);
+        var mensagem = `________________________________________________________________________________________ <br><br>A sua perda foi de <b style="color: red">${perda}%</b> da sua carga de <b>${produto}</b> que é <b style="color: red">R$${perda / 100 * total}</b> de um total de <b style="color: green">R$${total}</b>.<br><br>Contando com a margem de perda estipulada você receberá <b>R$${recebido - ((qtdPerda - (quantidade * margemPerda)) * valorUnitario )}.</b><br><br>`;
+        if (perda <= 10) {
+            div_final.innerHTML = mensagem;
+        } else {
+            if (perda <= 25) {
+                div_final.innerHTML = mensagem;
+                div_final.innerHTML += `<b style="color: red">Cuidado, é possivel reduzir essa perda!!</b>`
+            } else {
+                div_final.innerHTML = mensagem;
+                div_final.innerHTML += `<b style="color: red">A situação é alarmante, o seu lucro está sendo drasticamente reduzido!!</b>`
+            }
+        }
+    }
+    function analisar(){
+        var tamanho = Number(input_tamanho.value);
+        var alimento = Number(input_tamanho.value);
+        if(tamanho == 1){
+            if(alimento >= 0){
+                if(alimento <= 300){             
+                    div_mensagem.innerHTML = `O número de sensores será de 2`
+                }
+            }
+        }
+        if(tamanho == 2){
+            if(alimento >= 0){
+                if(alimento <= 700){
+                div_mensagem.innerHTML = `O número de sensores será de 4`
+                }
+            }
+        }
+        if(tamanho == 3){
+            if(alimento >= 0){
+                if(alimento <= 1000){
+                div_mensagem.innerHTML = `O número de sensores será de 8`
+                }
+            }
+        }
+        if(tamanho > 3){
+            div_mensagem.innerHTML = `Tamanho de caminhão não encontrado`
+        }
+        if(tamanho < 1){
+            div_mensagem.innerHTML = `Tamanho de caminhão não encontrado`
+        }
+}
+</script>
