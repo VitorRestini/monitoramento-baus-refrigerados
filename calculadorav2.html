@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2> CALCULADORA DE MONITORAMENTO DE TEMPERATURA DE BAÚS REFRIGERADOS</h2>
+    <p style="color: darkblue;">______________________________________________________________________________________________________________________________</p>
+    <div>
+        <h4> INFORMAÇÕES DOS PRODUTOS</h4>
+        <p>Nome do produto:</p>
+        <input type="text" id="id_nome_prod">
+        <p>Preço unitário do produto:</p>
+        <input type="text" id="id_preco_prod">
+        <p>Quantidade de produtos:</p>
+        <input type="number" id="id_qtd_prod">
+        <p>Temperatura máxima do produto:</p>
+        <input type="number" id="id_temp_max_prod">
+        <p>Temperatura mínima do produto:</p>
+        <input type="number" id="id_temp_min_prod">
+        <p>Peso unitário em KG:</p>
+        <input type="text" id="id_peso_prod">
+
+        <h4> INFORMAÇÕES DO VEÍCULO</h4>
+        <p>Placa do veículo:</p>
+        <input type="text" id="id_placa_veic">
+        <p>Nome do motorista:</p>
+        <input type="text" id="id_nome_veic">
+        <p>Contato do motorista:</p>
+        <input type="text" id="id_contato_veic">
+        <p>Capacicade máxima do veículo</p>
+        <input type="text" id="id_cpcd_veic">
+        <button onclick="calcular()">Calcular</button>
+    </div>
+
+</body>
+</html>
+<script>
+    function calcular(){
+        // Produto
+        var nomeProd = id_nome.value
+        var precoProd = Number(id_preco_prod.value)
+        var quantidade = Number(id_qtd_nome_prod.value)
+        var temperatura_maxima = Number(id_temp_max_prod.value)
+        var temperatura_minima = Number(id_temp_min.value)
+        var peso = Number(id_peso_prod.value)
+        // Veículo
+        
+        // Calculos
+        var precoTotal = preco * quantidade
+        var pesoTotal = peso * quantidade
+
+    }
+</script>
