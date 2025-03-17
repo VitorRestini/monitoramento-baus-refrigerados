@@ -22,6 +22,7 @@ ALTER TABLE TBL_USER_ADMIN ADD CONSTRAINT chkSenhaAdmin
 ALTER TABLE TBL_USER_ADMIN ADD CONSTRAINT chkCnpj
 		CHECK(cnpj NOT LIKE "% %");
 
+-- INSERÇÃO DE DADOS
 INSERT INTO TBL_USER_ADMIN (nome, cnpj, telefone, email, senha, verif_senha) VALUES
     ('Carlos Almeida', '12345678000195', '11987654321', 'carlos.almeida@email.com', 'S3nhaF0rte!', 'S3nhaF0rte!'),
     ('Mariana Souza', '98765432000188', '11976543210', 'mariana.souza@email.com', 'M@ri2024!!', 'M@ri2024!!'),
@@ -39,14 +40,6 @@ INSERT INTO TBL_USER_ADMIN (nome, cnpj, telefone, email, senha, verif_senha) VAL
     ('Rodrigo Almeida', '34567210000145', '11904321098', 'rodrigo.almeida@email.com', 'Rodr!g0@123', 'Rodr!g0@123'),
     ('Patricia Lima', '45678321000156', '11903210987', 'patricia.lima@email.com', 'P@tr1c1@_L!', 'P@tr1c1@_L!');
 
--- VIZUALIZAÇÃO DE INFORMAÇÕES
-SELECT * FROM TBL_USER_ADMIN;
-
-SELECT email, senha FROM TBL_USER_ADMIN WHERE senha LIKE '%$%';
-
-SELECT nome, telefone, email FROM TBL_USER_ADMIN WHERE nome NOT LIKE '%s%' ORDER BY nome ASC;
-
-SELECT CONCAT('Você pode contatar o/a ADMIN ',nome,' pelo número ',telefone,' ou pelo email ', email,' !') AS Contato_Admins FROM TBL_USER_ADMIN ORDER BY nome;
 
 -- CRIAÇÃO DA TABELA user
 CREATE TABLE TBL_USER(
@@ -70,6 +63,7 @@ ALTER TABLE TBL_USER ADD CONSTRAINT chkSenhaUser
 ALTER TABLE TBL_USER ADD CONSTRAINT chkCpf
 		CHECK(cpf NOT LIKE "% %");
 
+-- INSERÇÃO DE DADOS
 INSERT INTO TBL_USER (nome, cpf, telefone, email, senha, verif_senha, foto_url) VALUES
 	('João Silva', '123.456.789-01', '11987654321', 'joao.silva@example.com', 'senha123', 'senha123', 'http://example.com/fotos/joao.jpg'),
 	('Maria Oliveira', '234.567.890-12', '11912345678', 'maria.oliveira@example.com', 'senha456', 'senha456', 'http://example.com/fotos/maria.jpg'),
@@ -82,13 +76,6 @@ INSERT INTO TBL_USER (nome, cpf, telefone, email, senha, verif_senha, foto_url) 
 	('Lucas Pereira', '901.234.567-89', '11969473829', 'lucas.pereira@example.com', 'senha718', 'senha718', 'http://example.com/fotos/lucas.jpg'),
 	('Patrícia Gomes', '012.345.678-90', '11971743950', 'patricia.gomes@example.com', 'senha192', 'senha192', 'http://example.com/fotos/patricia.jpg'),
 	('Roberto Nunes', '123.456.789-02', '11985286901', 'roberto.nunes@example.com', 'senha021', 'senha021', 'http://example.com/fotos/roberto.jpg');
-
--- VIZUALIZAÇÃO DE INFORMAÇÕES
-SELECT * FROM TBL_USER;
-
-SELECT nome, telefone FROM TBL_USER WHERE telefone = '11969473829';
-
-SELECT * FROM TBL_USER WHERE cpf LIKE '_2%';
 
 
 -- CRIAÇÃO DA TABELA sensor
@@ -104,47 +91,38 @@ CREATE TABLE TBL_SENSOR(
 ALTER TABLE TBL_SENSOR ADD CONSTRAINT chkStatusSensor
 		CHECK(sensor_status IN('Ativo','Inativo','Manutenção'));
 
+-- INSERÇÃO DE DADOS
 INSERT INTO TBL_SENSOR (num_serie, posicao, sensor_status, temperatura) VALUES
     (1001, 'Ponto Mais Quente do Baú', 'Ativo', 2.5),
-    (1002, 'Ponto Mais Frio do Baú', 'Inativo', 4.0),
+    (1002, 'Ponto Mais Frio do Baú', 'Inativo', null),
     (1003, 'Centro do Baú', 'Ativo', 1.8),
     (1004, 'Canto Superior', 'Ativo', 3.1),
-    (1005, 'Canto Inferior', 'Inativo', 5.3),
+    (1005, 'Canto Inferior', 'Inativo', null),
     (1006, 'Próximo à Carga Sensível', 'Ativo', 9.7),
     (1007, 'Ponto Mais Quente do Baú', 'Ativo', 0.5),
-    (1008, 'Ponto Mais Frio do Baú', 'Manutenção', 1.9),
-    (1009, 'Centro do Baú', 'Inativo', 2.0),
-    (1010, 'Canto Superior', 'Ativo', 2.3),
+    (1008, 'Ponto Mais Frio do Baú', 'Manutenção', null),
+    (1009, 'Centro do Baú', 'Inativo', null),
+    (1010, 'Canto Superior', 'Ativo', -2.3),
     (1011, 'Canto Inferior', 'Ativo', 3.4),
-    (1012, 'Próximo à Carga Sensível', 'Inativo', 2.8),
-    (1013, 'Ponto Mais Quente do Baú', 'Ativo', 4.5),
+    (1012, 'Próximo à Carga Sensível', 'Inativo', null),
+    (1013, 'Ponto Mais Quente do Baú', 'Ativo', -4.5),
     (1014, 'Ponto Mais Frio do Baú', 'Ativo', 0.1),
-    (1015, 'Centro do Baú', 'Inativo', 1.8),
+    (1015, 'Centro do Baú', 'Inativo', null),
     (1016, 'Canto Superior', 'Ativo', 6.2),
     (1017, 'Canto Inferior', 'Ativo', 5.7),
-    (1018, 'Próximo à Carga Sensível', 'Inativo', 7.0),
+    (1018, 'Próximo à Carga Sensível', 'Inativo', null),
     (1019, 'Ponto Mais Quente do Baú', 'Ativo', 8.3),
     (1020, 'Ponto Mais Frio do Baú', 'Ativo', 2.6),
-    (1021, 'Centro do Baú', 'Inativo', 4.1),
-    (1022, 'Canto Superior', 'Ativo', -1.0),
+    (1021, 'Centro do Baú', 'Inativo', null),
+    (1022, 'Canto Superior', 'Ativo', -2.0),
     (1023, 'Canto Inferior', 'Ativo', 2.2),
-    (1024, 'Próximo à Carga Sensível', 'Inativo', 2.7),
+    (1024, 'Próximo à Carga Sensível', 'Inativo', null),
     (1025, 'Ponto Mais Quente do Baú', 'Ativo', 2.9),
-    (1026, 'Ponto Mais Frio do Baú', 'Manutenção', 2.5),
-    (1027, 'Centro do Baú', 'Manutenção', 1.4),
+    (1026, 'Ponto Mais Frio do Baú', 'Manutenção', null),
+    (1027, 'Centro do Baú', 'Manutenção', null),
     (1028, 'Canto Superior', 'Ativo', 2.9),
-    (1029, 'Canto Inferior', 'Ativo', 2.7),
-    (1030, 'Próximo à Carga Sensível', 'Inativo', 4.3);
-
--- VIZUALIZAÇÃO DE INFORMAÇÕES
-SELECT * FROM TBL_SENSOR;
-
-SELECT CONCAT('O sensor que possui o número de série ',num_serie,' está localizado no ',posicao,' e capturou a temperatura de: ',temperatura,'°C') AS Informações_do_sensor FROM TBL_SENSOR;
-
-SELECT num_serie, sensor_status,
-	CASE
-    WHEN sensor_status = 'Inativo' THEN 'Necessario Revisão'
-    END AS Status_sensor FROM TBL_SENSOR; 
+    (1029, 'Canto Inferior', 'Ativo', 7.7),
+    (1030, 'Próximo à Carga Sensível', 'Inativo', null);
 
 
 -- CRIAÇÃO DA TABELA produto
@@ -157,6 +135,7 @@ CREATE TABLE TBL_PRODUTO(
     foto_url VARCHAR(249) UNIQUE
 );
 
+-- INSERÇÃO DE DADOS
 INSERT INTO TBL_PRODUTO (nome, descricao, temp_max, temp_min, foto_url) VALUES
 	('Sorvete de Chocolate Delícia', 'Sorvete cremoso de chocolate belga, com pedaços de chocolate meio amargo. Perfeito para refrescar os dias quentes.', 5.00, -1.00, 'http://exemplo.com/sorvete_chocolate.jpg'),
 	('Iogurte Natural Premium', 'Iogurte natural sem adição de açúcares, com probióticos para uma alimentação saudável e saborosa.', 4.00, -2.00, 'http://exemplo.com/iogurte_natural.jpg'),
@@ -174,14 +153,6 @@ INSERT INTO TBL_PRODUTO (nome, descricao, temp_max, temp_min, foto_url) VALUES
 	('Frutas Cristalizadas', 'Frutas cristalizadas de alta qualidade, perfeitas para incrementar bolos, tortas ou comer puras.', 5.00, -3.00, 'http://exemplo.com/frutas_cristalizadas.jpg'),
 	('Chá de Camomila Relax', 'Chá de camomila com propriedades calmantes, ideal para relaxar e garantir uma noite de sono tranquila.', 5.00, -1.00, 'http://exemplo.com/cha_camomila.jpg');
 
--- VIZUALIZAÇÃO DE INFORMAÇÕES
-SELECT * FROM TBL_PRODUTO;
-
-SELECT nome FROM TBL_PRODUTO WHERE temp_max < 5;
-
-SELECT CONCAT(nome,' necessita estar entre ',temp_max,' e ',temp_min,' Graus Celsius.') AS Temperatura_ideal FROM TBL_PRODUTO;
-
-
 
 -- CRIAÇÃO DA TABELA carga
 CREATE TABLE TBL_CARGA(
@@ -190,6 +161,7 @@ CREATE TABLE TBL_CARGA(
     valor DECIMAL(7,2) NOT NULL
 );
 
+-- INSERÇÃO DE DADOS
 INSERT INTO TBL_CARGA (codigo_produto, valor) VALUES
 	(1, 159.99),
 	(2, 450.00),
@@ -207,11 +179,6 @@ INSERT INTO TBL_CARGA (codigo_produto, valor) VALUES
 	(14, 299.00),
 	(15, 1399.00);
 
--- VIZUALIZAÇÃO DE INFORMAÇÕES
-SELECT * FROM TBL_CARGA;
-
-SELECT id, codigo_produto FROM TBL_CARGA;
-
 
 -- CRIAÇÃO DA TABELA veiculo
 CREATE TABLE TBL_VEICULO(
@@ -227,6 +194,7 @@ CREATE TABLE TBL_VEICULO(
 ALTER TABLE TBL_VEICULO ADD CONSTRAINT chkPlaca
 		CHECK(placa NOT LIKE "% %");
 
+-- INSERÇÃO DE DADOS
 INSERT INTO TBL_VEICULO (placa, modelo, volume, motorista, codigo_sensor) VALUES
 	('AB1C234', 'Furgão Ford Transit', 150.0, 'Carlos Silva', 101),
 	('XY3Z567', 'Caminhão Mercedes-Benz', 300.0, 'Ana Oliveira', 102),
@@ -244,11 +212,6 @@ INSERT INTO TBL_VEICULO (placa, modelo, volume, motorista, codigo_sensor) VALUES
 	('KL5M901', 'Furgão Peugeot Boxer', 300.0, 'Rogério Silva', 114),
 	('NO6P345', 'Carreta Scania S500', 450.0, 'Vera Oliveira', 115);
 
--- VIZUALIZAÇÃO DE INFORMAÇÕES
-SELECT * FROM TBL_VEICULO;
-
-SELECT * FROM TBL_VEICULO WHERE codigo_sensor BETWEEN 110 AND 115;
-
 
 -- CRIAÇÃO DA TABELA uso
 CREATE TABLE TBL_USO(
@@ -259,6 +222,7 @@ CREATE TABLE TBL_USO(
     codigo_veiculo INT
 );
 
+-- INSERÇÃO DE DADOS
 INSERT INTO TBL_USO (dt, descricao, codigo_carga, codigo_veiculo) VALUES
 	('2025-01-07 07:12:00', 'Transporte de carga de sorvetes para a filial de São Paulo.', 1, 1),
 	('2025-02-11 08:45:30', 'Entrega de iogurtes para o supermercado local.', 2, 2),
@@ -276,11 +240,59 @@ INSERT INTO TBL_USO (dt, descricao, codigo_carga, codigo_veiculo) VALUES
 	('2025-11-26 17:36:09', 'Transporte de frutas cristalizadas para indústria de confeitaria.', 14, 14),
 	('2025-12-09 18:29:33', 'Entrega de chá de camomila para mercados de produtos naturais.', 15, 15);
 
+
 -- VIZUALIZAÇÃO DE INFORMAÇÕES
+
+-- TBL_USER_ADMIN
+SELECT * FROM TBL_USER_ADMIN;
+SELECT email, senha FROM TBL_USER_ADMIN WHERE senha LIKE '%$%';
+SELECT nome, telefone, email FROM TBL_USER_ADMIN WHERE nome NOT LIKE '%s%' ORDER BY nome ASC;
+SELECT CONCAT('Você pode contatar o/a ADMIN ',nome,' pelo número ',telefone,' ou pelo email ', email,' !') AS Contato_Admins FROM TBL_USER_ADMIN ORDER BY nome;
+
+
+-- TBL_USER
+SELECT * FROM TBL_USER;
+SELECT nome, telefone FROM TBL_USER WHERE telefone = '11969473829';
+SELECT * FROM TBL_USER WHERE cpf LIKE '_2%';
+
+
+-- TBL_SENSOR
+SELECT * FROM TBL_SENSOR;
+SELECT CONCAT('O sensor que possui o número de série ',num_serie,' está localizado no ',posicao,' e capturou a temperatura de: ',temperatura,'°C') AS Informações_do_sensor 
+	FROM TBL_SENSOR WHERE sensor_status = 'Ativo';
+SELECT num_serie,
+	CASE
+    WHEN sensor_status = 'Inativo' THEN 'Necessario Revisão'
+    WHEN sensor_status = 'Manutenção' THEN 'Necessario Revisão'
+    WHEN sensor_status = 'Ativo' THEN 'Está tudo certo'
+    END AS Status_sensor FROM TBL_SENSOR;    
+SELECT num_serie, IFNULL(temperatura, 'O sensor está com algum problema') AS Temperatura_obtida FROM TBL_SENSOR;
+SELECT num_serie, temperatura,
+	CASE
+    WHEN temperatura > 6 THEN 'Temperatura muito elevada, cuidado!'
+    WHEN temperatura < -1 THEN 'Temperatura muito baixa, cuidado!'
+    WHEN temperatura BETWEEN -1 AND 6 THEN 'A temperatura está de acordo com o ideal'
+    END AS Alerta FROM TBL_SENSOR WHERE sensor_status = 'Ativo';
+
+
+-- TBL_PRODUTO
+SELECT * FROM TBL_PRODUTO;
+SELECT nome FROM TBL_PRODUTO WHERE temp_max < 5;
+SELECT CONCAT(nome,' necessita estar entre ',temp_max,' e ',temp_min,' Graus Celsius.') AS Temperatura_ideal FROM TBL_PRODUTO;
+
+
+-- TBL_CARGA
+SELECT * FROM TBL_CARGA;
+SELECT id, codigo_produto FROM TBL_CARGA;
+
+
+-- TBL_VEICULO
+SELECT * FROM TBL_VEICULO;
+SELECT * FROM TBL_VEICULO WHERE codigo_sensor BETWEEN 110 AND 115;
+
+
+-- TBL_USO
 SELECT * FROM TBL_USO;
-
 SELECT * FROM TBL_USO WHERE dt > '2025-07-14';
-
 SELECT dt, descricao FROM TBL_USO WHERE descricao LIKE 'E%';
-
 SELECT * FROM TBL_USO WHERE descricao LIKE '%i__' ORDER BY id DESC;
