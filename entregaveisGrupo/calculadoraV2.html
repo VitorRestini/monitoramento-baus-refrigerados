@@ -8,7 +8,7 @@
 <body>
     <h2> CALCULADORA FINANCEIRA</h2>
     <h4 style="color: rgba(48, 48, 139, 0.63);">Monitoramento de Temperatura em Baús Refrigerados</h4>
-    <p style="color: rgba(48, 48, 139, 0.63);">________________________________________________________________________________________________________________________</p>
+    <p style="color: rgba(114, 120, 34, 0.63);">________________________________________________________________________________________________________________________</p>
     <div>
         <h4> INFORMAÇÕES DO PRODUTOS</h4>
         Nome do produto:
@@ -52,15 +52,25 @@
 
         <br><br>
 
-        Tamanho do baú<br>
-        Pequeno = menor que 10 metros||Médio = entre 10 e 15 metros:
-        <input type="text" id="id_tamanho_veic">
-
-        <br><br>
-
         Capacicade máxima do veículo em KG:
         <input type="number" id="id_cpcd_veic">
 
+        <br><br>
+
+        O quanto você receberá da empresa contratante para realizar o transporte:
+        <input type="number" id="id_frete_veic">
+
+        <br><br>
+
+        <h4> INFORMAÇÕES SOBRE POSSIVEL PERDA</h4>
+        Digite a quantidade de produtos da carga que foram perdidos: 
+        <input type="number" id="id_qtd_perda">
+        
+        <br><br>
+
+        Digite a porcentagem referente a margem de perda do produto transportado: 
+        <input type="number" id="id_margem_perda">
+        
         <br><br>
 
         <button onclick="calcular()">Analisar situação</button>
@@ -80,12 +90,16 @@
         // Veículo
         var placaVeic = id_placa_veic.value
         var nomeMotoristas = id_nome_veic. value
-        var tamanhoVeic = id_tamanho_veic.value
         var capacicadeVeic = Number(id_cpdc_veic.value)
+        var freteVeic = Number(id_frete_veic.value)
+        // Perda
+        var qtdPerda = Number(id_perda.value);
+        var margemPerda = Number(id_margem.value) / 100;
         
         // Calculos
-        var precoTotal = preco * quantidade
+        var precoTotal = precoProd * quantidade
         var pesoTotal = peso * quantidade
+        var perda = (100 * qtdPerda / quantidade);
 
         
     }
