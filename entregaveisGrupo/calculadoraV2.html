@@ -10,14 +10,17 @@
     <h4 style="color: rgba(48, 48, 139, 0.63);">Monitoramento de Temperatura em Baús Refrigerados</h4>
     <p style="color: rgba(114, 120, 34, 0.63);">________________________________________________________________________________________________________________________</p>
     <div>
-        <h4> INFORMAÇÕES DO PRODUTOS</h4>
+        <h4> INFORMAÇÕES DO PRODUTO</h4>
         Nome do produto:
         <input type="text" id="id_nome_prod">
 
         <br><br>
 
         Preço unitário do produto:
-        <input type="number" id="id_preco_prod">
+        <input type="number" id="id_preco_prod" placeholder="R$00,00">
+
+
+
 
         <br><br>
 
@@ -27,23 +30,20 @@
         <br><br>
 
         Temperatura máxima:
-        <input type="number" id="id_temp_max_prod">
+        <input type="number" id="id_temp_max_prod" placeholder="Em °C">
 
         <br><br>
 
         Temperatura mínima:
-        <input type="number" id="id_temp_min_prod">
+        <input type="number" id="id_temp_min_prod" placeholder="Em °C">
 
         <br><br>
 
-        Peso unitário em KG:  
-        <input type="number" id="id_peso_prod">
-
-        <br><br>
+      
         
         <h4> INFORMAÇÕES DO VEÍCULO</h4>
         Placa do veículo: 
-        <input type="text" id="id_placa_veic">
+        <input type="text" id="id_placa_veic" placeholder="ABC1D23">
 
         <br><br>
 
@@ -52,28 +52,23 @@
 
         <br><br>
 
-        Capacicade máxima do veículo em KG:
-        <input type="number" id="id_cpcd_veic">
+        <h4> INFORMAÇÕES DOS SENSORES</h4>
+        Temperatura média do sensor 1: 
+        <input type="number" id="id_sensor_1" placeholder="Em °C">
 
         <br><br>
 
-        O quanto você receberá da empresa contratante para realizar o transporte:
-        <input type="number" id="id_frete_veic">
+        Temperatura média do sensor 2:
+        <input type="number" id="id_sensor_2" placeholder="Em °C">
 
         <br><br>
-
-        <h4> INFORMAÇÕES SOBRE POSSIVEL PERDA</h4>
-        Digite a quantidade de produtos da carga que foram perdidos: 
-        <input type="number" id="id_qtd_perda">
-        
-        <br><br>
-
-        Digite a porcentagem referente a margem de perda do produto transportado: 
-        <input type="number" id="id_margem_perda">
-        
+        Temperatura média do sensor 3:
+        <input type="number" id="id_sensor_3" placeholder="Em °C">
         <br><br>
 
         <button onclick="calcular()">Analisar situação</button>
+
+        <div id="id_mensagem"></div>
     </div>
 
 </body>
@@ -81,26 +76,76 @@
 <script>
     function calcular(){
         // Produto
-        var nomeProd = id_nome.value
+        var nomeProd = id_nome_prod.value
         var precoProd = Number(id_preco_prod.value)
-        var quantidade = Number(id_qtd_nome_prod.value)
+        var quantidade = Number(id_qtd_prod.value)
         var temperatura_maxima = Number(id_temp_max_prod.value)
-        var temperatura_minima = Number(id_temp_min.value)
-        var peso = Number(id_peso_prod.value)
+        var temperatura_minima = Number(id_temp_min_prod.value)        
         // Veículo
         var placaVeic = id_placa_veic.value
         var nomeMotoristas = id_nome_veic. value
-        var capacicadeVeic = Number(id_cpdc_veic.value)
-        var freteVeic = Number(id_frete_veic.value)
-        // Perda
-        var qtdPerda = Number(id_perda.value);
-        var margemPerda = Number(id_margem.value) / 100;
-        
+        // Sensor
+        var s1 = Number(id_sensor_1.value)
+        var s2 = Number(id_sensor_2.value)
+        var s3 = Number(id_sensor_3.value)
+        // Validação
+        var exib = 0;
         // Calculos
         var precoTotal = precoProd * quantidade
-        var pesoTotal = peso * quantidade
-        var perda = (100 * qtdPerda / quantidade);
-
-        
-    }
+        var precoS3 = precoTotal*0.6
+        var precoS2 = precoTotal*0.7
+        var precoS1 = precoTotal*0.85
+        if(temperatura_maxima == '')
+            alert("Você deve informar a temperatura máxima!")
+        else if(temperatura_minima == '' )
+            alert("Você deve informar a temperatura mínima!")
+        else{
+                id_mensagem.innerHTML=
+            `
+                O veículo de placa <b>${placaVeic}</b> dirigido pelo motorista <b>${nomeMotoristas}</b> saiu para realizar o frete.<br>
+                A carga que o veículo carrega é composta por <b>${quantidade}</b> unidades de <b>${nomeProd}</b>, onde cada unidade possui um preço de <b>R$${precoProd.toFixed(2)}</b>. Totalizando o preço total daquela carga em <b>R$${precoTotal.toFixed(2)}</b>.
+                <br><br>
+            `
+            if(s1 <= temperatura_maxima)
+                if(s1 >= temperatura_minima)
+                    id_mensagem.innerHTML += `O sensor 1 teve uma temperatura média de: <b>${s1}°C</b><br>`
+                else{
+                    id_mensagem.innerHTML += `Cuidado! O sensor 1 teve uma temperatura média de: <b style="color:blue">${s1}°C</b> <br>Os produtos transportados não podem ser entregues, em razão da temperatura média do sensor 1 estar abaixo da temperatura miníma do produto!<br>`
+                    exib += 1
+                }
+            else{
+                id_mensagem.innerHTML += `Cuidado! O sensor 1 teve uma temperatura média de: <b style="color:red">${s1}°C</b> <br>Os produtos transportados não podem ser entregues, em razão da temperatura média do sensor 1 estar acima da temperatura máxima do produto!<br>`
+                exib += 1
+            }
+            if(s2 <= temperatura_maxima)
+                if(s2 >= temperatura_minima)
+                    id_mensagem.innerHTML += `O sensor 2 teve uma temperatura média de: <b>${s2}°C</b><br>`
+                else{
+                    id_mensagem.innerHTML += `Cuidado! O sensor 2 teve uma temperatura média de: <b style="color:blue">${s2}°C</b> <br>Os produtos transportados não podem ser entregues, em razão da temperatura média do sensor 2 estar abaixo da temperatura miníma do produto!<br>`
+                    exib += 1
+                }
+            else{
+                id_mensagem.innerHTML += `Cuidado! O sensor 2 teve uma temperatura média de: <b style="color:red">${s2}°C</b> <br>Os produtos transportados não podem ser entregues, em razão da temperatura média do sensor 2 estar acima da temperatura máxima do produto!<br>`
+                exib += 1
+            }
+                
+            if(s3 <= temperatura_maxima)
+                if(s3 >= temperatura_minima)
+                    id_mensagem.innerHTML += `O sensor 3 teve uma temperatura média de: <b>${s3}°C</b>`
+                else{
+                    id_mensagem.innerHTML += `Cuidado! O sensor 3 teve uma temperatura média de: <b style="color:blue">${s3}°C</b> <br>Os produtos transportados não podem ser entregues, em razão da temperatura média do sensor 3 estar abaixo da temperatura miníma do produto!<br>`
+                    exib += 1
+                }
+            else{
+                id_mensagem.innerHTML += `Cuidado! O sensor 3 teve uma temperatura média de: <b style="color:red">${s3}°C</b> <br>Os produtos transportados não podem ser entregues, em razão da temperatura média do sensor 3 estar acima da temperatura máxima do produto!<br>`
+                exib += 1
+            }
+        }
+        if(exib == 3)
+            id_mensagem.innerHTML += `<br><b>Todos</b> os sensores tiveram uma média de temperatura acima ou abaixo do permitido. O cálculo de perda depende de diversos fatores, mas pode estimar que o prejuízo é de 40%!<br> Valor atualizado da carga: <b> R$${precoS3.toFixed(2)}</b><br> Prejuízo financeiro de: <b>R$${(precoTotal - precoS3).toFixed(2)}!</b> `
+        else if(exib == 2)
+            id_mensagem.innerHTML += `<br> 2 sensores tiveram uma média de temperatura acima ou abaixo do permitido. O cálculo de perda depende de diversos fatores, mas pode estimar que o prejuízo é de 30%!<br> Valor atualizado da carga: <b> R$${precoS2.toFixed(2)}</b><br> Prejuízo financeiro de: <b>R$${(precoTotal - precoS2).toFixed(2)}!</b> `
+        else if(exib == 1)
+            id_mensagem.innerHTML += `<br> 1 dos sensores teve uma média de temperatura acima ou abaixo do permitido. O cálculo de perda depende de diversos fatores, mas pode estimar que o prejuízo é de 10%!<br> Valor atualizado da carga: <b> R$${precoS1.toFixed(2)}</b><br> Prejuízo financeiro de: <b>R$${(precoTotal - precoS1).toFixed(2)}!</b> `
+    }   
 </script>
