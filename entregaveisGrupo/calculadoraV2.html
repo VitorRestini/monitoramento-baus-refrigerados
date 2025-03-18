@@ -97,8 +97,7 @@
         var precoS1 = precoTotal*0.85
         if(temperatura_maxima == '')
             alert("Você deve informar a temperatura máxima!")
-        else if(temperatura_minima == '' )
-            alert("Você deve informar a temperatura mínima!")
+
         else{
                 id_mensagem.innerHTML=
             `
@@ -144,8 +143,8 @@
         if(exib == 3)
             id_mensagem.innerHTML += `<br><b>Todos</b> os sensores tiveram uma média de temperatura acima ou abaixo do permitido. O cálculo de perda depende de diversos fatores, mas pode estimar que o prejuízo é de 40%!<br> Valor atualizado da carga: <b> R$${precoS3.toFixed(2)}</b><br> Prejuízo financeiro de: <b>R$${(precoTotal - precoS3).toFixed(2)}!</b> `
         else if(exib == 2)
-            id_mensagem.innerHTML += `<br> 2 sensores tiveram uma média de temperatura acima ou abaixo do permitido. O cálculo de perda depende de diversos fatores, mas pode estimar que o prejuízo é de 30%!<br> Valor atualizado da carga: <b> R$${precoS2.toFixed(2)}</b><br> Prejuízo financeiro de: <b>R$${(precoTotal - precoS2).toFixed(2)}!</b> `
+            id_mensagem.innerHTML += `<br><br> 2 sensores tiveram uma média de temperatura acima ou abaixo do permitido. O cálculo de perda depende de diversos fatores, mas pode estimar que o prejuízo é de 30%!<br> Valor atualizado da carga: <b> R$${precoS2.toFixed(2)}</b><br> Prejuízo financeiro de: <b>R$${(precoTotal - precoS2).toFixed(2)}!</b> `
         else if(exib == 1)
-            id_mensagem.innerHTML += `<br> 1 dos sensores teve uma média de temperatura acima ou abaixo do permitido. O cálculo de perda depende de diversos fatores, mas pode estimar que o prejuízo é de 10%!<br> Valor atualizado da carga: <b> R$${precoS1.toFixed(2)}</b><br> Prejuízo financeiro de: <b>R$${(precoTotal - precoS1).toFixed(2)}!</b> `
+            id_mensagem.innerHTML += `<br><br> 1 dos sensores teve uma média de temperatura acima ou abaixo do permitido. O cálculo de perda depende de diversos fatores, mas pode estimar que o prejuízo é de 15%!<br> Valor atualizado da carga: <b> R$${precoS1.toFixed(2)}</b><br> Prejuízo financeiro de: <b>R$${(precoTotal - precoS1).toFixed(2)}!</b> `
     }   
 </script>
