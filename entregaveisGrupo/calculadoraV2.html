@@ -98,8 +98,8 @@
         if(temperatura_maxima == '')
             alert("Você deve informar a temperatura máxima!")
 
-        else{
-                id_mensagem.innerHTML=
+        else {
+                id_mensagem.innerHTML =
             `
                 O veículo de placa <b>${placaVeic}</b> dirigido pelo motorista <b>${nomeMotoristas}</b> saiu para realizar o frete.<br>
                 A carga que o veículo carrega é composta por <b>${quantidade}</b> unidades de <b>${nomeProd}</b>, onde cada unidade possui um preço de <b>R$${precoProd.toFixed(2)}</b>. Totalizando o preço total daquela carga em <b>R$${precoTotal.toFixed(2)}</b>.
@@ -108,22 +108,20 @@
             if(s1 <= temperatura_maxima)
                 if(s1 >= temperatura_minima)
                     id_mensagem.innerHTML += `O sensor 1 teve uma temperatura média de: <b>${s1}°C</b><br>`
-                else{
+                else {
                     id_mensagem.innerHTML += `Cuidado! O sensor 1 teve uma temperatura média de: <b style="color:blue">${s1}°C</b> <br>Os produtos transportados não podem ser entregues, em razão da temperatura média do sensor 1 estar abaixo da temperatura miníma do produto!<br>`
                     exib += 1
-                }
-            else{
+                } else {
                 id_mensagem.innerHTML += `Cuidado! O sensor 1 teve uma temperatura média de: <b style="color:red">${s1}°C</b> <br>Os produtos transportados não podem ser entregues, em razão da temperatura média do sensor 1 estar acima da temperatura máxima do produto!<br>`
                 exib += 1
             }
             if(s2 <= temperatura_maxima)
                 if(s2 >= temperatura_minima)
                     id_mensagem.innerHTML += `O sensor 2 teve uma temperatura média de: <b>${s2}°C</b><br>`
-                else{
+                else {
                     id_mensagem.innerHTML += `Cuidado! O sensor 2 teve uma temperatura média de: <b style="color:blue">${s2}°C</b> <br>Os produtos transportados não podem ser entregues, em razão da temperatura média do sensor 2 estar abaixo da temperatura miníma do produto!<br>`
                     exib += 1
-                }
-            else{
+                } else {
                 id_mensagem.innerHTML += `Cuidado! O sensor 2 teve uma temperatura média de: <b style="color:red">${s2}°C</b> <br>Os produtos transportados não podem ser entregues, em razão da temperatura média do sensor 2 estar acima da temperatura máxima do produto!<br>`
                 exib += 1
             }
@@ -131,11 +129,10 @@
             if(s3 <= temperatura_maxima)
                 if(s3 >= temperatura_minima)
                     id_mensagem.innerHTML += `O sensor 3 teve uma temperatura média de: <b>${s3}°C</b>`
-                else{
+                else {
                     id_mensagem.innerHTML += `Cuidado! O sensor 3 teve uma temperatura média de: <b style="color:blue">${s3}°C</b> <br>Os produtos transportados não podem ser entregues, em razão da temperatura média do sensor 3 estar abaixo da temperatura miníma do produto!<br>`
                     exib += 1
-                }
-            else{
+                } else {
                 id_mensagem.innerHTML += `Cuidado! O sensor 3 teve uma temperatura média de: <b style="color:red">${s3}°C</b> <br>Os produtos transportados não podem ser entregues, em razão da temperatura média do sensor 3 estar acima da temperatura máxima do produto!<br>`
                 exib += 1
             }

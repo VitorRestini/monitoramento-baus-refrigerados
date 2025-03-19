@@ -102,7 +102,13 @@
         var total = valorUnitario * quantidade;
         var perda = (100 * qtdPerda / quantidade);
 
-        var mensagem = `________________________________________________________________________________________ <br><br>A sua perda foi de <b style="color: red">${perda}%</b> da sua carga de <b>${produto}</b> que é <b style="color: red">R$${perda / 100 * total}</b> de um total de <b style="color: green">R$${total}</b>.<br><br>Contando com a margem de perda estipulada você receberá <b>R$${recebido - ((qtdPerda - (quantidade * margemPerda)) * valorUnitario )}.</b><br><br>`;
+        if (margemPerda * 100 < perda) {
+            var mensagem = `________________________________________________________________________________________ <br><br>A sua perda foi de <b style="color: red">${perda}%</b> da sua carga de <b>${produto}</b> que é <b style="color: red">R$${perda / 100 * total}</b> de um total de <b style="color: green">R$${total}</b>.<br><br>Contando com a margem de perda estipulada você receberá <b>R$${recebido - ((qtdPerda - (quantidade * margemPerda)) * valorUnitario )}.</b><br><br> Com nossa solução vocêpoderia ter uma redução de cerca de 15% desse prejuizo. <br>`;
+        } else {
+            var mensagem = `________________________________________________________________________________________ <br><br>A sua perda foi de <b style="color: red">${perda}%</b> da sua carga de <b>${produto}</b> que é <b style="color: red">R$${perda / 100 * total}</b> de um total de <b style="color: green">R$${total}</b>.<br><br>Contando com a margem de perda estipulada você receberá <b>R$${recebido}.</b><br><br>`;
+        }
+
+
 
         if (perda <= 10) {
             div_final.innerHTML = mensagem;
